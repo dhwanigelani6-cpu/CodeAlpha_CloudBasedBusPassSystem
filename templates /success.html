@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Application Submitted{% endblock %}
+{% block content %}
+<section class="panel">
+  <h1>Application Submitted Successfully!</h1>
+  <p>Your application has been saved. Keep this code to check your status.</p>
+  <p><strong>Application code:</strong> <span class="pill">{{ record.pass_code }}</span></p>
+  <p><strong>Name:</strong> {{ record.full_name }}</p>
+  <p><strong>Plan:</strong> {{ record.plan }} — ₹{{ record.fare }}</p>
+  <p><strong>Status:</strong> {{ record.status }}</p>
+  <a class="button" href="{{ url_for('track') }}">Track Application</a>
+  <a class="button secondary" href="{{ url_for('home') }}">Home</a>
+</section>
+{% endblock %}
