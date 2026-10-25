@@ -1,0 +1,13 @@
+{% extends "base.html" %}{% block title %}Apply for Pass | CloudPass{% endblock %}{% block content %}
+<section class="page-heading"><span class="eyebrow">DIGITAL APPLICATION</span><h1>Apply for a bus pass</h1><p>Choose a sample route and pass type. The server calculates the demo fare.</p></section>
+<form class="form-card wide" method="post"><label>Bus route<select name="route_id" required><option value="">Select a route</option>{% for route in routes %}<option value="{{ route['id'] }}">{{ route['origin'] }} → {{ route['destination'] }}</option>{% endfor %}</select></label>
+<label>Pass type<select name="pass_type" id="passType" required><option value="">Select pass type</option><option>Daily</option><option>Monthly</option><option>Student</option></select></label>
+<div class="price-preview"><span>Sample fare</span><strong id="price">Select a pass</strong></div>
+<p class="small-muted">Demo prices: Daily ₹50 · Monthly ₹1,200 · Student ₹600. Actual transit prices and eligibility may differ.</p>
+<button class="button full" type="submit">Submit Application</button></form>
+<script>
+const prices = {Daily: 50, Monthly: 1200, Student: 600};
+const select = document.getElementById('passType');
+select.addEventListener('change', () => { document.getElementById('price').textContent = prices[select.value] ? '₹' + prices[select.value] : 'Select a pass'; });
+</script>
+{% endblock %}
