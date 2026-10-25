@@ -7,8 +7,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash, ses
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
-
-        import os
+import os
 from flask import Flask
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
