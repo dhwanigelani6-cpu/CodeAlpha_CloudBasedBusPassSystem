@@ -1,6 +1,6 @@
 # Cloud-Based Bus Pass System
 
-A beginner-friendly CodeAlpha Cloud Computing Task 3 demo built with Python Flask, HTML, CSS, JavaScript, and a database.
+A beginner-friendly CodeAlpha Cloud Computing Task 3 demo built with Python Flask,HTML, CSS, JavaScript, and a database.
 
 ## Features
 - User registration and login with hashed passwords
