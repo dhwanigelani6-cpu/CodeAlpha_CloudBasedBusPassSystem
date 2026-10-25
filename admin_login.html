@@ -1,9 +1,0 @@
-{% extends "base.html" %}
-{% block title %}Admin Login{% endblock %}
-{% block content %}
-<section class="page-intro"><span class="eyebrow">AUTHORIZED ACCESS</span><h1>Admin login</h1><p>Admin password must be configured in the ADMIN_PASSWORD environment variable.</p></section>
-<form class="form-card narrow" method="post">
-  <label>Admin password<input type="password" name="password" required autocomplete="current-password"></label>
-  <button class="button primary" type="submit">Sign In</button>
-</form>
-{% endblock %}
