@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Apply | Cloud-Based Bus Pass System{% endblock %}
+{% block content %}
+<section class="panel">
+  <h1>Apply for a Bus Pass</h1>
+  <p class="muted">Enter accurate details. Your application will start with Pending status.</p>
+  <form method="post" action="{{ url_for('apply') }}">
+    <label for="full_name">Full name</label>
+    <input id="full_name" name="full_name" maxlength="100" required>
+    <label for="email">Email</label>
+    <input id="email" type="email" name="email" maxlength="150" required>
+    <label for="phone">Phone number</label>
+    <input id="phone" name="phone" type="tel" maxlength="20" required>
+    <label for="route">Bus route / From–To</label>
+    <input id="route" name="route" maxlength="150" placeholder="e.g. Ahmedabad to Gandhinagar" required>
+    <label for="plan">Pass plan</label>
+    <select id="plan" name="plan" required>
+      <option value="">Select a plan</option>
+      {% for name, price in fare_plans.items() %}
+      <option value="{{ name }}">{{ name }} — ₹{{ price }}</option>
+      {% endfor %}
+    </select>
+    <p><button type="submit">Submit Application</button></p>
+  </form>
+</section>
+{% endblock %}
