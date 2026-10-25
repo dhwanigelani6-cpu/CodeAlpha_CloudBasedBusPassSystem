@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Cloud-Based Bus Pass System{% endblock %}</title>
+  <style>
+    :root { --blue:#1456a0; --dark:#12304a; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:Arial,Helvetica,sans-serif; background:#f4f7fb; color:#172b3a; line-height:1.55; }
+    header { background:var(--dark); color:white; padding:16px 5%; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+    header a { color:white; text-decoration:none; margin-right:14px; font-weight:600; }
+    .brand { font-size:1.15rem; font-weight:700; }
+    main { width:min(1000px,92%); margin:32px auto; min-height:60vh; }
+    .hero { background:linear-gradient(130deg,#1456a0,#2687c9); color:white; border-radius:18px; padding:42px 30px; }
+    .hero h1 { font-size:clamp(2rem,5vw,3rem); margin:0 0 12px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:16px; margin:22px 0; }
+    .card,.panel { background:white; border-radius:14px; padding:22px; box-shadow:0 4px 18px #102b4a12; }
+    .button,button { display:inline-block; background:var(--blue); color:white; border:0; border-radius:8px; padding:11px 17px; text-decoration:none; cursor:pointer; font-weight:700; }
+    .button.secondary { background:#e7effa; color:var(--dark); }
+    label { display:block; font-weight:700; margin:14px 0 6px; }
+    input,select { width:100%; padding:12px; border:1px solid #cbd5e1; border-radius:8px; font:inherit; background:white; }
+    form { max-width:650px; }
+    .flash { padding:12px 15px; border-radius:8px; margin:12px 0; background:#fff2d8; }
+    .flash.success { background:#e4f7ec; color:#135c38; }
+    .flash.error { background:#feeceb; color:#8f1b14; }
+    .muted { color:#617386; }
+    .pill { display:inline-block; padding:4px 10px; border-radius:99px; background:#e7effa; font-size:.85rem; }
+    table { width:100%; border-collapse:collapse; background:white; }
+    th,td { padding:10px; border-bottom:1px solid #e1e8f0; text-align:left; vertical-align:top; }
+    .table-wrap { overflow-x:auto; border-radius:12px; }
+    footer { text-align:center; padding:22px; color:#64748b; }
+    @media(max-width:600px) { header { display:block; } header nav { margin-top:12px; } header a { display:inline-block; margin:5px 10px 5px 0; } main { margin:20px auto; } .hero { padding:28px 20px; } }
+  </style>
+</head>
+<body>
+<header>
+  <a class="brand" href="{{ url_for('home') }}">🚌 Cloud-Based Bus Pass</a>
+  <nav>
+    <a href="{{ url_for('home') }}">Home</a>
+    <a href="{{ url_for('apply') }}">Apply</a>
+    <a href="{{ url_for('track') }}">Track Pass</a>
+    <a href="{{ url_for('admin_login') }}">Admin</a>
+  </nav>
+</header>
+<main>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}{% for category, message in messages %}
+      <div class="flash {{ category }}">{{ message }}</div>
+    {% endfor %}{% endif %}
+  {% endwith %}
+  {% block content %}{% endblock %}
+</main>
+<footer>Cloud-Based Bus Pass System · Student project demo</footer>
+</body>
+</html>
