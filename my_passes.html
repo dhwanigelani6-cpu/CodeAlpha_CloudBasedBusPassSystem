@@ -1,4 +1,0 @@
-{% extends "base.html" %}{% block title %}My Passes | CloudPass{% endblock %}{% block content %}
-<section class="page-heading"><span class="eyebrow">YOUR TRAVEL RECORDS</span><h1>My passes</h1><p>Welcome, {{ session.get('name') }}. Your bookings are listed below.</p></section>
-{% if bookings %}<div class="table-wrap"><table><thead><tr><th>Booking ID</th><th>Route</th><th>Pass</th><th>Fare</th><th>Status</th><th>Date</th></tr></thead><tbody>{% for b in bookings %}<tr><td><strong>{{ b['booking_code'] }}</strong></td><td>{{ b['origin'] }} → {{ b['destination'] }}</td><td>{{ b['pass_type'] }}</td><td>₹{{ b['amount'] }}</td><td><span class="status">{{ b['status'] }}</span></td><td>{{ b['created_at'] }}</td></tr>{% endfor %}</tbody></table></div>{% else %}<div class="empty-state"><div>🎫</div><h2>No passes yet</h2><p>Your bus pass bookings will appear here.</p><a class="button" href="{{ url_for('apply') }}">Apply for a Pass</a></div>{% endif %}
-{% endblock %}
