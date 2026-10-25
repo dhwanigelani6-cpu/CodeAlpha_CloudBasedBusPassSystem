@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Track Pass{% endblock %}
+{% block content %}
+<section class="panel">
+  <h1>Track Your Application</h1>
+  <p>Enter the application code shown after you submit the form.</p>
+  <form method="post" action="{{ url_for('track') }}">
+    <label for="pass_code">Application code</label>
+    <input id="pass_code" name="pass_code" placeholder="e.g. BUS12AB34CD" required>
+    <p><button type="submit">Check Status</button></p>
+  </form>
+  {% if record %}
+  <hr>
+  <h2>Application Details</h2>
+  <p><strong>Code:</strong> {{ record.pass_code }}</p>
+  <p><strong>Name:</strong> {{ record.full_name }}</p>
+  <p><strong>Route:</strong> {{ record.route }}</p>
+  <p><strong>Plan:</strong> {{ record.plan }} — ₹{{ record.fare }}</p>
+  <p><strong>Status:</strong> <span class="pill">{{ record.status }}</span></p>
+  <p><strong>Applied on:</strong> {{ record.created_at }}</p>
+  {% endif %}
+</section>
+{% endblock %}
