@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
+<div class="dashboard-heading"><div><span class="eyebrow">MANAGEMENT</span><h1>Applications dashboard</h1><p>Review applications and update their status.</p></div><a class="button secondary" href="{{ url_for('admin_logout') }}">Log out</a></div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Reference</th><th>Applicant</th><th>Route</th><th>Pass</th><th>Fare</th><th>Status</th><th>Update</th></tr></thead>
+<tbody>
+{% for item in applications %}
+<tr>
+<td><strong>{{ item["reference"] }}</strong><small>{{ item["created_at"] }}</small></td>
+<td>{{ item["full_name"] }}<small>{{ item["email"] }}</small></td>
+<td>{{ item["route"] }}</td><td>{{ item["pass_type"] }}</td><td>₹{{ item["fare"] }}</td>
+<td><span class="status {{ item['status']|lower }}">{{ item["status"] }}</span></td>
+<td><form class="inline-form" method="post"><input type="hidden" name="reference" value="{{ item['reference'] }}"><select name="status" aria-label="New status"><option {% if item["status"] == "Pending" %}selected{% endif %}>Pending</option><option {% if item["status"] == "Approved" %}selected{% endif %}>Approved</option><option {% if item["status"] == "Rejected" %}selected{% endif %}>Rejected</option></select><button class="button small primary" type="submit">Save</button></form></td>
+</tr>
+{% else %}
+<tr><td colspan="7" class="empty">No applications have been submitted yet.</td></tr>
+{% endfor %}
+</tbody></table>
+</div>
+{% endblock %}

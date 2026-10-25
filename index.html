@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-copy">
+    <span class="eyebrow">SMARTER DAILY TRAVEL</span>
+    <h1>Your bus pass.<br><span>Made simple.</span></h1>
+    <p>Apply online, receive a unique reference number, and track your application from one convenient dashboard.</p>
+    <div class="hero-actions">
+      <a class="button primary" href="{{ url_for('apply') }}">Apply for a Pass →</a>
+      <a class="button secondary" href="{{ url_for('track') }}">Track Application</a>
+    </div>
+  </div>
+  <div class="ticket-card">
+    <div class="ticket-top"><span>☁ CloudPass</span><span class="pill">ONLINE</span></div>
+    <div class="ticket-symbol">🚌</div>
+    <p class="muted">TRAVEL PASS</p>
+    <h2>One pass. Easy travel.</h2>
+    <div class="ticket-line"></div>
+    <div class="ticket-bottom"><span>Fast application</span><span>Secure tracking</span></div>
+  </div>
+</section>
+<section class="section-heading">
+  <span class="eyebrow">SIMPLE PRICING</span>
+  <h2>Choose a pass that fits your travel</h2>
+  <p>These are illustrative project fares. Replace them with official prices before real-world use.</p>
+</section>
+<section class="plans">
+  {% for name, fare in fare_plans.items() %}
+  <article class="plan-card">
+    <div class="plan-icon">🎫</div>
+    <h3>{{ name }}</h3>
+    <p class="price">₹{{ fare }} <small>/ pass</small></p>
+    <p class="muted">Submit an application for review.</p>
+    <a href="{{ url_for('apply') }}" class="text-link">Choose plan →</a>
+  </article>
+  {% endfor %}
+</section>
+<section class="feature-row">
+  <div><span>01</span><h3>Apply online</h3><p>Enter your details and travel route in a simple form.</p></div>
+  <div><span>02</span><h3>Track status</h3><p>Use your reference number to check the latest status.</p></div>
+  <div><span>03</span><h3>Admin review</h3><p>Authorized staff can review and update applications.</p></div>
+</section>
+{% endblock %}
