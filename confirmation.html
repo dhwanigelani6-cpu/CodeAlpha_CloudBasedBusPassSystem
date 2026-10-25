@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block title %}Booking Confirmation | CloudPass{% endblock %}{% block content %}
+<section class="confirmation"><div class="success-mark">✓</div><span class="eyebrow">APPLICATION RECORDED</span><h1>Booking created</h1><p>This is a demo booking confirmation, not a government-issued bus pass.</p>
+<div class="ticket"><div class="ticket-top"><span>CLOUDPASS · DEMO</span><strong>{{ booking['booking_code'] }}</strong></div><div class="ticket-route"><div><small>FROM</small><h3>{{ route['origin'] }}</h3></div><span class="arrow">→</span><div><small>TO</small><h3>{{ route['destination'] }}</h3></div></div><div class="ticket-bottom"><div><small>PASS TYPE</small><strong>{{ pass_type }}</strong></div><div><small>FARE</small><strong>₹{{ booking['amount'] }}</strong></div><div><small>STATUS</small><strong>{{ booking['status'] }}</strong></div></div></div>
+<a class="button" href="{{ url_for('my_passes') }}">View My Passes</a></section>
+{% endblock %}
