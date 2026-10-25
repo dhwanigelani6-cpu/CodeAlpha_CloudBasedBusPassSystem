@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Home | Cloud-Based Bus Pass System{% endblock %}
+{% block content %}
+<section class="hero">
+  <h1>Your bus pass, made simpler.</h1>
+  <p>Apply for a bus pass online, choose a fare plan, and track your application status in one place.</p>
+  <a class="button" href="{{ url_for('apply') }}">Apply for a Pass</a>
+  <a class="button secondary" href="{{ url_for('track') }}">Track Application</a>
+</section>
+<h2>Available Fare Plans</h2>
+<div class="grid">
+  {% for name, price in fare_plans.items() %}
+  <article class="card">
+    <h3>{{ name }}</h3>
+    <p><strong>₹{{ price }}</strong></p>
+    <p class="muted">Demo fare; confirm actual prices with your transport provider.</p>
+    <a href="{{ url_for('apply') }}">Choose plan →</a>
+  </article>
+  {% endfor %}
+</div>
+<div class="panel">
+  <h2>How it works</h2>
+  <p>1. Fill out the application form. 2. Save your application code. 3. Use the code on Track Pass to check status.</p>
+</div>
+{% endblock %}
