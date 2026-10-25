@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Error{% endblock %}
+{% block content %}
+<section class="panel">
+  <h1>Sorry, something went wrong.</h1>
+  <p>{{ message or "The requested page could not be found." }}</p>
+  <a class="button" href="{{ url_for('home') }}">Back to Home</a>
+</section>
+{% endblock %}
